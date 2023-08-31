@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: Sample REST server
+  description: TODO
+  version: 1.0.0
+servers:
+  - url: https://127.0.01:8080
+paths:
+  /user/add:
+    post:
+      summary: Add a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User added successfully
+          content: {}
+        '400':
+          description: Incorrect user id
+          content: {}
+  /user/remove:
+    post:
+      summary: Remove a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User removed successfully
+          content: {}
+        '400':
+          description: Incorrect user id
+          content: {}
+  /segment/add:
+    post:
+      summary: Add a segment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Segment'
+      responses:
+        '200':
+          description: Segment added successfully
+          content: {}
+        '400':
+          description: Incorrect segment data
+          content: {}
+  /segment/remove:
+    post:
+      summary: Remove a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Segment'
+      responses:
+        '200':
+          description: Segment removed successfully
+          content: {}
+        '400':
+          description: Incorrect user id
+          content: {}
+        '500':
+          description: Server problems
+          content: {}
+  /usersegments/update:
+    post:
+      summary: Update user segments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserSegments'
+      responses:
+        '200':
+          description: User segments updated successfully
+          content: {}
+        '400':
+          description: Incorrect user segments data
+          content: {}
+  /usersegments/get:
+    post:
+      summary: Get user active segments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: gg
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  default: avito_perfomance_vas
+        '400':
+          description: Incorrect user id
+          content: {}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          default: 1
+      required:
+        - id
+    Segment:
+      type: object
+      properties:
+        slug:
+          type: string
+          default: avito_voice_messages
+        percent:
+          type: string
+          default:  50
+      required:
+        - slug
+    UpdateUserSegments:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          default: 1
+        add_slugs:
+          type: array
+          items:
+            type: string
+            default: avito_voice_messages
+        delete_slugs:
+          type: array
+          items:
+            type: string
+            default: avito_perfomance_vas
+      required:
+        - user_id
