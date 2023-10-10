@@ -1,8 +1,8 @@
 # Интрукция по запуску
 1. Запустить контейнер с базой данных<br>
-`docker compose run db`
+`docker compose up db`
 2. Запустить контейнер с сервером<br>
-`docker compose run avito-app`
+`docker compose up avito-app`
 
 # Эксплуатация
 OpenAPI документация лежит в /api
